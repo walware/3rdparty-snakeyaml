@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="de.walware.3rdparty.snakeyaml"
+      label="SnakeYAML"
+      version="1.15.0.qualifier"
+      provider-name="WalWare.de"
+      license-feature="de.walware.opensource.license"
+      license-feature-version="1.0.0">
+
+   <description url="http://snakeyaml.org">
+      SnakeYAML, YAML library for Java by snakeyaml.org.
+   </description>
+
+   <copyright>
+      Copyright (c) 2008-2014 snakeyaml.org and others. All rights reserved.
+   </copyright>
+
+   <license url="%license_url">
+      %license_text
+   </license>
+
+   <plugin
+         id="de.walware.3rdparty.snakeyaml"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
