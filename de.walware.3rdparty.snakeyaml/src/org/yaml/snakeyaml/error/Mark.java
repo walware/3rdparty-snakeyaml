@@ -22,16 +22,14 @@ import org.yaml.snakeyaml.scanner.Constant;
  * does not use it for any other purposes.
  */
 public final class Mark {
-    private String name;
     private int index;
     private int line;
     private int column;
     private String buffer;
     private int pointer;
 
-    public Mark(String name, int index, int line, int column, String buffer, int pointer) {
+    public Mark(int index, int line, int column, String buffer, int pointer) {
         super();
-        this.name = name;
         this.index = index;
         this.line = line;
         this.column = column;
@@ -91,9 +89,8 @@ public final class Mark {
     @Override
     public String toString() {
         String snippet = get_snippet();
-        StringBuilder where = new StringBuilder(" in ");
-        where.append(name);
-        where.append(", line ");
+        StringBuilder where = new StringBuilder();
+        where.append("in line ");
         where.append(line + 1);
         where.append(", column ");
         where.append(column + 1);
@@ -105,7 +102,7 @@ public final class Mark {
     }
 
     public String getName() {
-        return name;
+        return "";
     }
 
     /**

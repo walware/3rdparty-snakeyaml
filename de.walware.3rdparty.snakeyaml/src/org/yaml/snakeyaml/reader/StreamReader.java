@@ -43,12 +43,8 @@ public class StreamReader {
 
     public StreamReader(String stream) {
         this.name = "'string'";
-        this.buffer = ""; // to set length to 0
-        checkPrintable(stream);
-        this.buffer = stream + "\0";
-        this.stream = null;
-        this.eof = true;
-        this.data = null;
+        this.stream= null;
+        reset(stream, 0);
     }
 
     public StreamReader(Reader reader) {
@@ -67,6 +63,21 @@ public class StreamReader {
             throw new ReaderException(name, position, em.group().charAt(0),
                     "special characters are not allowed");
         }
+    }
+
+    public void reset(String stream, int index) {
+        if (this.name != "'string'") {
+            throw new IllegalArgumentException();
+        }
+        this.buffer= ""; // to set length to 0
+        checkPrintable(stream);
+        this.buffer= stream + "\0";
+        this.eof= true;
+        this.data= null;
+        this.pointer= 0;
+        this.index= index;
+        this.line= 0;
+        this.column= 0;
     }
 
     /**
@@ -101,7 +112,7 @@ public class StreamReader {
     }
 
     public Mark getMark() {
-        return new Mark(name, this.index, this.line, this.column, this.buffer, this.pointer);
+        return new Mark(this.index, this.line, this.column, this.buffer, this.pointer);
     }
 
     public void forward() {
